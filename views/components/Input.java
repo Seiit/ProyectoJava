@@ -3,11 +3,8 @@ package views.components;
 import java.awt.Font;
 import java.awt.Color;
 
-
-import javax.swing.BorderFactory;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 public class Input {

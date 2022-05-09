@@ -1,6 +1,5 @@
 package views;
 
-import javax.print.DocFlavor.INPUT_STREAM;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
