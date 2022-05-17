@@ -25,6 +25,8 @@ public class Input {
         input.setFont(new Font("roboto",Font.PLAIN,30));
         input.setBorder(new TitledBorder(contenido));
         input.setForeground(Color.gray);
+
+        input.setText("0");
         
         input.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {
