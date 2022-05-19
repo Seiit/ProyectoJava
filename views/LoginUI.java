@@ -59,7 +59,6 @@ public class LoginUI extends JFrame implements ActionListener , VIewInterface{
     public void actionPerformed(ActionEvent e) {
         MainUI main = new MainUI();
         main.setVisible(true);
-        this.dispose();
-        
+        this.dispose();  
     }
 }

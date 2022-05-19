@@ -26,7 +26,7 @@ public class Input {
         input.setBorder(new TitledBorder(contenido));
         input.setForeground(Color.gray);
 
-        input.setText("0");
+        input.setText("");
         
         input.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {

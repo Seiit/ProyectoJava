@@ -22,6 +22,7 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
     JTextField nota2;
     JTextField nota3;
 
+    JLabel idTxt;
     JLabel primerNombreTxt;
     JLabel segundoNombreTxt;
     JLabel primerApellidoTxt;
@@ -33,7 +34,7 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
 
     public MainUI() {
 
-        this.setSize(800, 650);
+        this.setSize(800, 700);
         this.setLocationRelativeTo(null);
         this.construct();
         this.getContentPane().add(construct());
@@ -44,21 +45,34 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "Calcular") {
 
-            EstudianteModel estuduante = new EstudianteModel(
+            double n1 = (this.nota1.getText().length() == 0)?0:Double.parseDouble(this.nota1.getText());
+            double n2 = (this.nota2.getText().length() == 0)?0:Double.parseDouble(this.nota2.getText());
+            double n3 = (this.nota3.getText().length() == 0)?0:Double.parseDouble(this.nota3.getText());
+
+            this.printData(new EstudianteModel(
                     0,
                     "",
                     "",
                     "",
                     "",
-                    Double.parseDouble(this.nota1.getText().toString()),
-                    Double.parseDouble(this.nota2.getText().toString()),
-                    Double.parseDouble(this.nota3.getText().toString())
+                    n1,
+                    n2,
+                    n3
+                )
             );
-            this.nota1Txt.setText(this.nota1.getText());
-            this.nota2Txt.setText(this.nota2.getText());
-            this.nota3Txt.setText(this.nota3.getText());
-            this.notaFinal.setText(""+estuduante.getNotaFInal());
         }
+    }
+
+    public void printData(EstudianteModel estudiante){
+        this.idTxt.setText(estudiante.getId()+"");
+        this.primerNombreTxt.setText(estudiante.getPrimerNombre());
+        this.segundoNombreTxt.setText(estudiante.getSegundoNombre());
+        this.primerApellidoTxt.setText(estudiante.getPrimerApellido());
+        this.segundoApellidoTxt.setText(estudiante.getSegundoApellido());
+        this.nota1Txt.setText(""+estudiante.getNota1());
+        this.nota2Txt.setText(""+estudiante.getNota2());
+        this.nota3Txt.setText(""+estudiante.getNota3());
+        this.notaFinal.setText(""+estudiante.getNotaFInal());
     }
 
     @Override
@@ -73,7 +87,7 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
         Submit submit = new Submit();
 
         JPanel panel = card.getBackground();
-        JPanel mainContent = card.getCard(40, 25, ancho, 550);
+        JPanel mainContent = card.getCard(40, 25, ancho, 600);
 
         JLabel main_title = title.getH1("Gestor de notas", 0, 0, ancho, 50);
         JLabel main_title2 = title.getH1("Calculo unitario", 0, 0, 350, 50);
@@ -85,17 +99,18 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
         JButton unicoBtn = submit.getActionButton("Calcular", componentLeft, 230, componentWidth, 50);
         unicoBtn.addActionListener(this);
 
-        this.primerNombreTxt = title.getTH2("Primer Nombre", 25, 70, componentWidth, 50);
-        this.segundoNombreTxt = title.getTH2("Segundo Nombre", 25, 120, componentWidth, 50);
-        this.primerApellidoTxt = title.getTH2("Primer Apellido", 25, 170, componentWidth, 50);
-        this.segundoApellidoTxt = title.getTH2("Segundo Apellido", 25, 220, componentWidth, 50);
-        this.nota1Txt = title.getTH2("Nota1", 25, 270, componentWidth, 50);
-        this.nota2Txt = title.getTH2("Nota2", 25, 320, componentWidth, 50);
-        this.nota3Txt = title.getTH2("Nota3", 25, 370, componentWidth, 50);
-        this.notaFinal = title.getTH2("Nota FInal", 25, 420, componentWidth, 50);
+        this.idTxt = title.getTH2("Id", 25, 70, componentWidth, 50);
+        this.primerNombreTxt = title.getTH2("Primer Nombre", 25, 120, componentWidth, 50);
+        this.segundoNombreTxt = title.getTH2("Segundo Nombre", 25, 170, componentWidth, 50);
+        this.primerApellidoTxt = title.getTH2("Primer Apellido", 25, 220, componentWidth, 50);
+        this.segundoApellidoTxt = title.getTH2("Segundo Apellido", 25, 270, componentWidth, 50);
+        this.nota1Txt = title.getTH2("Nota1", 25, 320, componentWidth, 50);
+        this.nota2Txt = title.getTH2("Nota2", 25, 370, componentWidth, 50);
+        this.nota3Txt = title.getTH2("Nota3", 25, 420, componentWidth, 50);
+        this.notaFinal = title.getTH2("Nota FInal", 25, 470, componentWidth, 50);
 
-        JPanel content = card.getCard(0, 50, ancho, 500);
-        JPanel inputPanel = card.getCard(0, 0, 350, 500);
+        JPanel content = card.getCard(0, 50, ancho, 600);
+        JPanel inputPanel = card.getCard(0, 0, 350, 600);
         JPanel outputPanel = card.getCard(350, 0, 350, 600);
 
         mainContent.add(main_title);
@@ -110,6 +125,7 @@ public class MainUI extends JFrame implements ActionListener, VIewInterface {
 
         // COnstruimos el segundo cuadro
         outputPanel.add(main_title3);
+        outputPanel.add(idTxt);
         outputPanel.add(primerNombreTxt);
         outputPanel.add(segundoNombreTxt);
         outputPanel.add(primerApellidoTxt);

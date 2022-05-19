@@ -24,6 +24,9 @@ public class UserModel{
         this.pass = pass;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getPrimerNombre() {
         return primerNombre;
     }
@@ -37,6 +40,9 @@ public class UserModel{
         return segundoApellido;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setPrimerNombre(String primerNombre) {
         this.primerNombre = primerNombre;
     }
