@@ -51,6 +51,7 @@ public class FileService {
                 Double.parseDouble(""+result.get(6)), 
                 Double.parseDouble(""+result.get(7)) 
             );
+            key++;
         }
 
         return estudiantes;

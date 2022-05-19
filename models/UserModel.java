@@ -1,6 +1,6 @@
 package models;
 
-public class UserModel{
+public abstract class UserModel{
     private int id;
     private String primerNombre;
     private String segundoNombre;

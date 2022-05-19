@@ -1,21 +1,13 @@
 import java.io.IOException;
 
-import services.FileService;
-import views.LoginUI;
-import views.MainUI;
+import controllers.LoginController;
 
 public class App{
     public static void main(String args[]) throws IOException{
         
+        LoginController login = new LoginController(450,380);
+
+        login.setVisible(true);
         
-        LoginUI login = new LoginUI();
-        MainUI main = new MainUI();
-
-        main.setVisible(true);
-        
-
-        FileService file = new FileService();
-
-        file.readDb();
     }
 }

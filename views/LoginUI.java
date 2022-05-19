@@ -9,23 +9,26 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import views.components.Title;
-import views.components.VIewInterface;
+import views.components.ViewInterface;
+import views.components.ViewModel;
 import views.components.Card;
 import views.components.Input;
 import views.components.Submit;
+import views.components.Title;
 
-public class LoginUI extends JFrame implements ActionListener , VIewInterface{
-
-    public LoginUI() {
-
-        this.setSize(800, 600);
-        this.setLocationRelativeTo(null);
-        this.getContentPane().add(construct());
-
+public class LoginUI extends ViewModel implements ActionListener , ViewInterface {
+    
+    public LoginUI(int globalX, int globalY) {
+        super(globalX, globalY);
+        this.construct();
     }
 
-    public JPanel construct() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
+
+    @Override
+    public void construct() {
         int ancho = 400;
         int componentWidth = 300;
         int componentLeft = 50;
@@ -36,7 +39,7 @@ public class LoginUI extends JFrame implements ActionListener , VIewInterface{
         Submit submit = new Submit();
 
         JPanel panel = card.getBackground();
-        JPanel login = card.getCard(200, 75, ancho, 300);
+        JPanel login = card.getCard(20, 20, ancho, 300);
 
         JLabel login_title = title.getH1("Inicio de Sesion", 0, 0, ancho, 50);
 
@@ -53,12 +56,23 @@ public class LoginUI extends JFrame implements ActionListener , VIewInterface{
 
         panel.add(login);
 
-        return panel;
+        this.getContentPane().add(panel);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        MainUI main = new MainUI();
-        main.setVisible(true);
-        this.dispose();  
+    @Override
+    public void leftCont(int hX,int hY,int lMargin,int width) {
+        
     }
+
+    @Override
+    public void rightCont(int hX,int hY,int lMargin,int width) {
+        
+    }
+
+    @Override
+    public void cont(int hX,int hY) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
