@@ -1,18 +1,14 @@
 package views;
 
-import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.print.PrinterException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 
-import models.EstudianteModel;
 import views.components.Card;
 import views.components.Input;
 import views.components.Submit;
@@ -43,7 +39,7 @@ public class ResultUI extends ViewModel implements ActionListener, ViewInterface
     @Override
     public void construct() {
         int ancho = 800;
-        int alto = 600;
+        int alto = 750;
 
         JPanel mainContent = card.getCard(0, 0, ancho, alto);
         JLabel main_title = title.getH1("Gestor de notas", 0, 0, ancho, 50);
@@ -64,12 +60,25 @@ public class ResultUI extends ViewModel implements ActionListener, ViewInterface
     @Override
     public void rightCont(int hX, int hY, int lMargin, int width) {
         JPanel outputPanel = getLeftContent();
-        JScrollPane tblCont = card.getCardScroll(0, 0, hX, hY);
         outputPanel = card.getCard(0, 0, hX, hY);
+        
+        JButton nextBtn = submit.getActionButton("Siguiente", 425, 420, width, 50);
+        nextBtn.addActionListener(this);
 
-        tblCont.add(this.tabla);
-        outputPanel.add(tblCont);
+        JButton prevBtn = submit.getActionButton("Anterior", 60, 420, width, 50);
+        prevBtn.addActionListener(this);
 
+        JButton saveBtn = submit.getActionButton("Guardar", 425, 490, width, 50);
+        saveBtn.addActionListener(this);
+
+        JButton printBtn = submit.getActionButton("Imprimir", 60, 490, width, 50);
+        printBtn.addActionListener(this);
+        
+        outputPanel.add(this.tabla);
+        outputPanel.add(prevBtn);
+        outputPanel.add(nextBtn);
+        outputPanel.add(printBtn);
+        outputPanel.add(saveBtn);
         setRightContent(outputPanel);
     }
 

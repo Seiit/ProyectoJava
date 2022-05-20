@@ -17,7 +17,7 @@ public class App{
         FileService file = new FileService();
         EstudianteModel estudiantes[] = file.readDb();
 
-        ResultController resultController = new ResultController(estudiantes, 800, 600);
+        ResultController resultController = new ResultController(estudiantes, 800, 650);
         resultController.setVisible(true);
     }
 }
