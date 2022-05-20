@@ -51,7 +51,7 @@ public class MainController extends MainUI{
         FileService file = new FileService();
         EstudianteModel estudiantes[] = file.readDb();
 
-        int id = Integer.parseInt(super.id.getText());
+        int id = Integer.parseInt((super.id.getText().length() == 0)?"0":super.id.getText());
 
         for(int i=0 ; i < estudiantes.length ;i++){
             if(estudiantes[i].getId() == id){
