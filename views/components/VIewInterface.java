@@ -1,6 +1,6 @@
 package views.components;
 
-public interface ViewInterface{
+public interface ViewInterface {
 
     public void construct();
     public void cont(int hX,int hY);

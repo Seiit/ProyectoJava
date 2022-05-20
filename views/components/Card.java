@@ -1,6 +1,7 @@
 package views.components;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import java.awt.Color;
 
@@ -21,4 +22,14 @@ public class Card {
         card.setBackground(Color.white); 
         return card;
     }
+
+    public JScrollPane getCardScroll(int ejeX,int ejeY,int ancho,int alto){
+        JScrollPane card = new JScrollPane();
+        card.setSize(ancho,alto);
+        card.setLocation(ejeX,ejeY );
+        card.setLayout(null);
+        card.setBackground(Color.white); 
+        return card;
+    }
+
 }

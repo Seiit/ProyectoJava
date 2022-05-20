@@ -21,12 +21,10 @@ public class MainController extends MainUI{
         if(e.getActionCommand() == "Calcular")this.calcular();
         if(e.getActionCommand() == "Buscar")
             try {
-                this.Buscar();
+                this.Buscara();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
-        
-        
     }
 
     public void calcular(){
@@ -58,6 +56,14 @@ public class MainController extends MainUI{
                 printData(estudiantes[i]);
             }
         }
+    }
+
+    public void Buscara() throws IOException{
+        FileService file = new FileService();
+        EstudianteModel estudiantes[] = file.readDb();
+
+        ResultController resultController = new ResultController(estudiantes, 800, 600);
+        resultController.setVisible(true);
     }
 
 }

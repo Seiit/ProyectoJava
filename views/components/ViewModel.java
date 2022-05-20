@@ -3,7 +3,7 @@ package views.components;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ViewModel extends JFrame{
+public class ViewModel extends JFrame {
 
     private JPanel cont = new JPanel();
     private JPanel leftContent = new JPanel();
