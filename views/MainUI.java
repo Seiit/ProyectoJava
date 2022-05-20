@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -26,6 +27,7 @@ public class MainUI extends ViewModel implements ActionListener, ViewInterface{
     protected JTextField nota1;
     protected JTextField nota2;
     protected JTextField nota3;
+    protected JFileChooser fc;
 
     JLabel idTxt;
     JLabel primerNombreTxt;
@@ -85,13 +87,28 @@ public class MainUI extends ViewModel implements ActionListener, ViewInterface{
         JButton findBtn = submit.getActionButton("Buscar", lMargin, 350, width, 50);
         findBtn.addActionListener(this);
 
+        JButton uploadBtn = submit.getActionButton("Subir", lMargin, 410, width, 50);
+        uploadBtn.addActionListener(this);
+
+        JButton getAllBtn = submit.getActionButton("Todos", lMargin, 470, width, 50);
+        getAllBtn.addActionListener(this);
+
+        JPanel tarjeta = card.getCard(0, 70, 600, 650);
+        this.fc = input.getFileInput("File", 25, 0, 330, 460);
+        fc.addActionListener(this);
+        tarjeta.add(fc);
+        tarjeta.setVisible(false);
+
         inputPanel.add(main_title2);
+        inputPanel.add(tarjeta);
         inputPanel.add(nota1);
         inputPanel.add(nota2);
         inputPanel.add(nota3);
         inputPanel.add(unicoBtn);
         inputPanel.add(id);
         inputPanel.add(findBtn);
+        inputPanel.add(uploadBtn);
+        inputPanel.add(getAllBtn);
 
         setLeftContent(inputPanel);
     }

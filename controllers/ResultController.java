@@ -1,7 +1,11 @@
 package controllers;
 
 import models.EstudianteModel;
+import services.FileService;
+
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+
 import views.ResultUI;
 
 public class ResultController extends ResultUI {
@@ -9,8 +13,9 @@ public class ResultController extends ResultUI {
     int actual = 1;
     EstudianteModel[] estudiantes;
 
-    public ResultController(EstudianteModel[] estudiantes, int globalX, int globalY) {
+    public ResultController(EstudianteModel[] estudiantes, int globalX, int globalY,Boolean file) {
         super(globalX, globalY);
+        super.file = file;
         this.estudiantes = estudiantes;
         proccesFirstData();
         construct();
@@ -26,9 +31,12 @@ public class ResultController extends ResultUI {
         if (e.getActionCommand() == "Anterior")
             this.prev();
         if (e.getActionCommand() == "Guardar")
-            this.save();
-        if (e.getActionCommand() == "Imprimir")
-            this.print();
+            try {
+                this.save();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
 
     }
 
@@ -52,16 +60,14 @@ public class ResultController extends ResultUI {
         }
     }
 
-    public void save() {
-        if (actual != 1)
-            actual--;
-        setData();
-    }
+    public void save() throws IOException {
+        FileService fS = new FileService();
+        fS.addData(estudiantes);
+        this.dispose();
 
-    public void print() {
-        if (actual != 1)
-            actual--;
-        setData();
+        EstudianteModel estudiantes[] = fS.readDb();
+        ResultController resultController = new ResultController(estudiantes, 800, 650,false);
+        resultController.setVisible(true);
     }
 
     public void proccesFirstData() {
@@ -82,8 +88,12 @@ public class ResultController extends ResultUI {
         rowData[0][6] = columnNames[6];
         rowData[0][7] = columnNames[7];
         rowData[0][8] = columnNames[8];
+
         int limit = (this.actual * 10) - 10;
-        for (int i = 1; i <= 11; i++) {
+        int inicio = 1;
+        int end = 11;
+
+        for (int i = inicio; i <= end; i++) {
             try {
                 rowData[i][0] = this.estudiantes[(limit + i) - 1].getId() + "";
                 rowData[i][1] = this.estudiantes[(limit + i) - 1].getPrimerNombre();
@@ -100,6 +110,6 @@ public class ResultController extends ResultUI {
         }
         super.rowData = rowData;
         super.columnNames = columnNames;
-        super.tabla = title.getTable(rowData, columnNames, 90, 10, 600, 400);
+        super.tabla = title.getTable(rowData, columnNames, 50, 10, 700, 400);
     }
 }

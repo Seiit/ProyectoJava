@@ -25,6 +25,7 @@ public class ResultUI extends ViewModel implements ActionListener, ViewInterface
     protected String[] columnNames;
     protected String [][] rowData;
     protected JTable tabla;
+    protected boolean file = false;
 
     public ResultUI(int globalX, int globalY) {
         super(globalX, globalY);
@@ -68,16 +69,13 @@ public class ResultUI extends ViewModel implements ActionListener, ViewInterface
         JButton prevBtn = submit.getActionButton("Anterior", 60, 420, width, 50);
         prevBtn.addActionListener(this);
 
-        JButton saveBtn = submit.getActionButton("Guardar", 425, 490, width, 50);
+        JButton saveBtn = submit.getActionButton("Guardar", 240, 490, width, 50);
         saveBtn.addActionListener(this);
-
-        JButton printBtn = submit.getActionButton("Imprimir", 60, 490, width, 50);
-        printBtn.addActionListener(this);
+        saveBtn.setVisible(this.file);
         
         outputPanel.add(this.tabla);
         outputPanel.add(prevBtn);
         outputPanel.add(nextBtn);
-        outputPanel.add(printBtn);
         outputPanel.add(saveBtn);
         setRightContent(outputPanel);
     }

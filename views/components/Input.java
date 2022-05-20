@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.Color;
 
+import javax.swing.JFileChooser;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -67,5 +68,15 @@ public class Input {
         input.setForeground(Color.gray);
         
         return input;
+    }
+
+    public final JFileChooser getFileInput(String contenido,int x ,int y ,int largo,int alto){
+        JFileChooser fileC = new JFileChooser();
+        fileC.setBounds(x, y, largo,alto);
+        fileC.setFont(new Font("roboto",Font.PLAIN,30));
+        fileC.setBorder(new TitledBorder(contenido));
+        fileC.setForeground(Color.gray);
+        
+        return fileC;
     }
 }
